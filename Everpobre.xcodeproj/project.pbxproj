@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9051AAB216BF046004F35AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AAA216BF046004F35AA /* AppDelegate.swift */; };
+		D9051AAD216BF046004F35AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AAC216BF046004F35AA /* ViewController.swift */; };
+		D9051AB0216BF046004F35AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9051AAE216BF046004F35AA /* Main.storyboard */; };
+		D9051AB5216BF047004F35AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9051AB3216BF047004F35AA /* LaunchScreen.storyboard */; };
+		D9051AC0216BF047004F35AA /* EverpobreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051ABF216BF047004F35AA /* EverpobreTests.swift */; };
+		D9051ACD216BF856004F35AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9051ACC216BF856004F35AA /* Assets.xcassets */; };
+		D9051ACF216BFB31004F35AA /* NotebookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051ACE216BFB31004F35AA /* NotebookListCell.swift */; };
+		D9051AD2216BFB81004F35AA /* NotebookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AD1216BFB81004F35AA /* NotebookListViewController.swift */; };
+		D9051AD5216BFCCD004F35AA /* deprecated_Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AD4216BFCCD004F35AA /* deprecated_Notebook.swift */; };
+		D9051AD7216C02D1004F35AA /* deprecated_Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AD6216C02D1004F35AA /* deprecated_Note.swift */; };
+		D9051ADA216C03F9004F35AA /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AD9216C03F9004F35AA /* NotesListViewController.swift */; };
+		D9051ADE216C0D94004F35AA /* NoteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051ADC216C0D94004F35AA /* NoteDetailsViewController.swift */; };
+		D9051ADF216C0D94004F35AA /* NoteDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9051ADD216C0D94004F35AA /* NoteDetailsViewController.xib */; };
+		D9051AE2216D2FB1004F35AA /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AE1216D2FB1004F35AA /* Date+Utils.swift */; };
+		D9051AE4216D38E0004F35AA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AE3216D38E0004F35AA /* CoreDataStack.swift */; };
+		D9051AE7216D3CFD004F35AA /* Everpobre.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9051AE5216D3CFD004F35AA /* Everpobre.xcdatamodeld */; };
+		D9051B00216FCAFE004F35AA /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AFC216FCAFD004F35AA /* Note+CoreDataClass.swift */; };
+		D9051B01216FCAFE004F35AA /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AFD216FCAFE004F35AA /* Note+CoreDataProperties.swift */; };
+		D9051B02216FCAFE004F35AA /* Notebook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AFE216FCAFE004F35AA /* Notebook+CoreDataClass.swift */; };
+		D9051B03216FCAFE004F35AA /* Notebook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9051AFF216FCAFE004F35AA /* Notebook+CoreDataProperties.swift */; };
+		D96D6DAC217F2FE5004EB54D /* NewNotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DAA217F2FE4004EB54D /* NewNotesListViewController.swift */; };
+		D96D6DAD217F2FE5004EB54D /* NewNotesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96D6DAB217F2FE4004EB54D /* NewNotesListViewController.xib */; };
+		D96D6DB0217F5D2A004EB54D /* NotesListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DAE217F5D2A004EB54D /* NotesListCollectionViewCell.swift */; };
+		D96D6DB1217F5D2A004EB54D /* NotesListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96D6DAF217F5D2A004EB54D /* NotesListCollectionViewCell.xib */; };
+		D96D6DD421813ED3004EB54D /* UIImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD121813ED3004EB54D /* UIImage+Alpha.swift */; };
+		D96D6DD521813ED3004EB54D /* UIImage+ReSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD221813ED3004EB54D /* UIImage+ReSize.swift */; };
+		D96D6DD621813ED3004EB54D /* UIImage+RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD321813ED3004EB54D /* UIImage+RoundCorner.swift */; };
+		D96D6DD821829525004EB54D /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD721829525004EB54D /* Animator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D9051ABC216BF047004F35AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9051A9F216BF045004F35AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9051AA6216BF046004F35AA;
+			remoteInfo = Everpobre;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D9051AA7216BF046004F35AA /* Everpobre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everpobre.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9051AAA216BF046004F35AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D9051AAC216BF046004F35AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9051AAF216BF046004F35AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9051AB4216BF047004F35AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9051AB6216BF047004F35AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9051ABB216BF047004F35AA /* EverpobreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverpobreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9051ABF216BF047004F35AA /* EverpobreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverpobreTests.swift; sourceTree = "<group>"; };
+		D9051AC1216BF047004F35AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9051ACC216BF856004F35AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9051ACE216BFB31004F35AA /* NotebookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookListCell.swift; sourceTree = "<group>"; };
+		D9051AD1216BFB81004F35AA /* NotebookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookListViewController.swift; sourceTree = "<group>"; };
+		D9051AD4216BFCCD004F35AA /* deprecated_Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deprecated_Notebook.swift; sourceTree = "<group>"; };
+		D9051AD6216C02D1004F35AA /* deprecated_Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deprecated_Note.swift; sourceTree = "<group>"; };
+		D9051AD9216C03F9004F35AA /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		D9051ADC216C0D94004F35AA /* NoteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewController.swift; sourceTree = "<group>"; };
+		D9051ADD216C0D94004F35AA /* NoteDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteDetailsViewController.xib; sourceTree = "<group>"; };
+		D9051AE1216D2FB1004F35AA /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		D9051AE3216D38E0004F35AA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D9051AE6216D3CFD004F35AA /* Everpobre.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Everpobre.xcdatamodel; sourceTree = "<group>"; };
+		D9051AFC216FCAFD004F35AA /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D9051AFD216FCAFE004F35AA /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D9051AFE216FCAFE004F35AA /* Notebook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D9051AFF216FCAFE004F35AA /* Notebook+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D96D6DAA217F2FE4004EB54D /* NewNotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotesListViewController.swift; sourceTree = "<group>"; };
+		D96D6DAB217F2FE4004EB54D /* NewNotesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNotesListViewController.xib; sourceTree = "<group>"; };
+		D96D6DAE217F5D2A004EB54D /* NotesListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListCollectionViewCell.swift; sourceTree = "<group>"; };
+		D96D6DAF217F5D2A004EB54D /* NotesListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesListCollectionViewCell.xib; sourceTree = "<group>"; };
+		D96D6DD02180B096004EB54D /* Everpobre_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Everpobre_v2.xcdatamodel; sourceTree = "<group>"; };
+		D96D6DD121813ED3004EB54D /* UIImage+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Alpha.swift"; sourceTree = "<group>"; };
+		D96D6DD221813ED3004EB54D /* UIImage+ReSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ReSize.swift"; sourceTree = "<group>"; };
+		D96D6DD321813ED3004EB54D /* UIImage+RoundCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundCorner.swift"; sourceTree = "<group>"; };
+		D96D6DD721829525004EB54D /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9051AA4216BF046004F35AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9051AB8216BF047004F35AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9051A9E216BF045004F35AA = {
+			isa = PBXGroup;
+			children = (
+				D9051AA9216BF046004F35AA /* Everpobre */,
+				D9051ABE216BF047004F35AA /* EverpobreTests */,
+				D9051AA8216BF046004F35AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9051AA8216BF046004F35AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9051AA7216BF046004F35AA /* Everpobre.app */,
+				D9051ABB216BF047004F35AA /* EverpobreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9051AA9216BF046004F35AA /* Everpobre */ = {
+			isa = PBXGroup;
+			children = (
+				D9051AE0216D2F9A004F35AA /* Utils */,
+				D9051AD3216BFCBC004F35AA /* Model */,
+				D9051AD0216BFB46004F35AA /* NotebookList */,
+				D9051AD8216C03DC004F35AA /* NotesList */,
+				D9051ADB216C0D46004F35AA /* NotesDetail */,
+				D9051AAA216BF046004F35AA /* AppDelegate.swift */,
+				D9051AAC216BF046004F35AA /* ViewController.swift */,
+				D9051AAE216BF046004F35AA /* Main.storyboard */,
+				D9051AB3216BF047004F35AA /* LaunchScreen.storyboard */,
+				D9051AB6216BF047004F35AA /* Info.plist */,
+				D9051ACC216BF856004F35AA /* Assets.xcassets */,
+				D9051AE5216D3CFD004F35AA /* Everpobre.xcdatamodeld */,
+			);
+			path = Everpobre;
+			sourceTree = "<group>";
+		};
+		D9051ABE216BF047004F35AA /* EverpobreTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9051ABF216BF047004F35AA /* EverpobreTests.swift */,
+				D9051AC1216BF047004F35AA /* Info.plist */,
+			);
+			path = EverpobreTests;
+			sourceTree = "<group>";
+		};
+		D9051AD0216BFB46004F35AA /* NotebookList */ = {
+			isa = PBXGroup;
+			children = (
+				D9051AD1216BFB81004F35AA /* NotebookListViewController.swift */,
+				D9051ACE216BFB31004F35AA /* NotebookListCell.swift */,
+			);
+			path = NotebookList;
+			sourceTree = "<group>";
+		};
+		D9051AD3216BFCBC004F35AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9051AFC216FCAFD004F35AA /* Note+CoreDataClass.swift */,
+				D9051AFD216FCAFE004F35AA /* Note+CoreDataProperties.swift */,
+				D9051AFE216FCAFE004F35AA /* Notebook+CoreDataClass.swift */,
+				D9051AFF216FCAFE004F35AA /* Notebook+CoreDataProperties.swift */,
+				D9051AD4216BFCCD004F35AA /* deprecated_Notebook.swift */,
+				D9051AD6216C02D1004F35AA /* deprecated_Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D9051AD8216C03DC004F35AA /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				D9051AD9216C03F9004F35AA /* NotesListViewController.swift */,
+				D96D6DAA217F2FE4004EB54D /* NewNotesListViewController.swift */,
+				D96D6DAB217F2FE4004EB54D /* NewNotesListViewController.xib */,
+				D96D6DAE217F5D2A004EB54D /* NotesListCollectionViewCell.swift */,
+				D96D6DAF217F5D2A004EB54D /* NotesListCollectionViewCell.xib */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
+		D9051ADB216C0D46004F35AA /* NotesDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D9051ADC216C0D94004F35AA /* NoteDetailsViewController.swift */,
+				D9051ADD216C0D94004F35AA /* NoteDetailsViewController.xib */,
+			);
+			path = NotesDetail;
+			sourceTree = "<group>";
+		};
+		D9051AE0216D2F9A004F35AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D96D6DD121813ED3004EB54D /* UIImage+Alpha.swift */,
+				D96D6DD221813ED3004EB54D /* UIImage+ReSize.swift */,
+				D96D6DD321813ED3004EB54D /* UIImage+RoundCorner.swift */,
+				D9051AE1216D2FB1004F35AA /* Date+Utils.swift */,
+				D9051AE3216D38E0004F35AA /* CoreDataStack.swift */,
+				D96D6DD721829525004EB54D /* Animator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9051AA6216BF046004F35AA /* Everpobre */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9051AC4216BF047004F35AA /* Build configuration list for PBXNativeTarget "Everpobre" */;
+			buildPhases = (
+				D9051AA3216BF046004F35AA /* Sources */,
+				D9051AA4216BF046004F35AA /* Frameworks */,
+				D9051AA5216BF046004F35AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Everpobre;
+			productName = Everpobre;
+			productReference = D9051AA7216BF046004F35AA /* Everpobre.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9051ABA216BF047004F35AA /* EverpobreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9051AC7216BF047004F35AA /* Build configuration list for PBXNativeTarget "EverpobreTests" */;
+			buildPhases = (
+				D9051AB7216BF047004F35AA /* Sources */,
+				D9051AB8216BF047004F35AA /* Frameworks */,
+				D9051AB9216BF047004F35AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9051ABD216BF047004F35AA /* PBXTargetDependency */,
+			);
+			name = EverpobreTests;
+			productName = EverpobreTests;
+			productReference = D9051ABB216BF047004F35AA /* EverpobreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9051A9F216BF045004F35AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Noelia Alvarez";
+				TargetAttributes = {
+					D9051AA6216BF046004F35AA = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					D9051ABA216BF047004F35AA = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D9051AA6216BF046004F35AA;
+					};
+				};
+			};
+			buildConfigurationList = D9051AA2216BF045004F35AA /* Build configuration list for PBXProject "Everpobre" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9051A9E216BF045004F35AA;
+			productRefGroup = D9051AA8216BF046004F35AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9051AA6216BF046004F35AA /* Everpobre */,
+				D9051ABA216BF047004F35AA /* EverpobreTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9051AA5216BF046004F35AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9051AB5216BF047004F35AA /* LaunchScreen.storyboard in Resources */,
+				D96D6DB1217F5D2A004EB54D /* NotesListCollectionViewCell.xib in Resources */,
+				D9051ADF216C0D94004F35AA /* NoteDetailsViewController.xib in Resources */,
+				D96D6DAD217F2FE5004EB54D /* NewNotesListViewController.xib in Resources */,
+				D9051ACD216BF856004F35AA /* Assets.xcassets in Resources */,
+				D9051AB0216BF046004F35AA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9051AB9216BF047004F35AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9051AA3216BF046004F35AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96D6DB0217F5D2A004EB54D /* NotesListCollectionViewCell.swift in Sources */,
+				D9051AAD216BF046004F35AA /* ViewController.swift in Sources */,
+				D96D6DAC217F2FE5004EB54D /* NewNotesListViewController.swift in Sources */,
+				D9051AE2216D2FB1004F35AA /* Date+Utils.swift in Sources */,
+				D9051B03216FCAFE004F35AA /* Notebook+CoreDataProperties.swift in Sources */,
+				D9051AAB216BF046004F35AA /* AppDelegate.swift in Sources */,
+				D9051B01216FCAFE004F35AA /* Note+CoreDataProperties.swift in Sources */,
+				D9051B02216FCAFE004F35AA /* Notebook+CoreDataClass.swift in Sources */,
+				D9051AD2216BFB81004F35AA /* NotebookListViewController.swift in Sources */,
+				D9051ACF216BFB31004F35AA /* NotebookListCell.swift in Sources */,
+				D96D6DD421813ED3004EB54D /* UIImage+Alpha.swift in Sources */,
+				D9051AE7216D3CFD004F35AA /* Everpobre.xcdatamodeld in Sources */,
+				D96D6DD821829525004EB54D /* Animator.swift in Sources */,
+				D9051AE4216D38E0004F35AA /* CoreDataStack.swift in Sources */,
+				D96D6DD621813ED3004EB54D /* UIImage+RoundCorner.swift in Sources */,
+				D9051AD5216BFCCD004F35AA /* deprecated_Notebook.swift in Sources */,
+				D9051ADE216C0D94004F35AA /* NoteDetailsViewController.swift in Sources */,
+				D9051B00216FCAFE004F35AA /* Note+CoreDataClass.swift in Sources */,
+				D9051AD7216C02D1004F35AA /* deprecated_Note.swift in Sources */,
+				D96D6DD521813ED3004EB54D /* UIImage+ReSize.swift in Sources */,
+				D9051ADA216C03F9004F35AA /* NotesListViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9051AB7216BF047004F35AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9051AC0216BF047004F35AA /* EverpobreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9051ABD216BF047004F35AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9051AA6216BF046004F35AA /* Everpobre */;
+			targetProxy = D9051ABC216BF047004F35AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D9051AAE216BF046004F35AA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9051AAF216BF046004F35AA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D9051AB3216BF047004F35AA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9051AB4216BF047004F35AA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9051AC2216BF047004F35AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9051AC3216BF047004F35AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9051AC5216BF047004F35AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YHEMF3923G;
+				INFOPLIST_FILE = Everpobre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nasli.Everpobre;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9051AC6216BF047004F35AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YHEMF3923G;
+				INFOPLIST_FILE = Everpobre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nasli.Everpobre;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D9051AC8216BF047004F35AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YHEMF3923G;
+				INFOPLIST_FILE = EverpobreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nasli.EverpobreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Everpobre.app/Everpobre";
+			};
+			name = Debug;
+		};
+		D9051AC9216BF047004F35AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YHEMF3923G;
+				INFOPLIST_FILE = EverpobreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.nasli.EverpobreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Everpobre.app/Everpobre";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9051AA2216BF045004F35AA /* Build configuration list for PBXProject "Everpobre" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9051AC2216BF047004F35AA /* Debug */,
+				D9051AC3216BF047004F35AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9051AC4216BF047004F35AA /* Build configuration list for PBXNativeTarget "Everpobre" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9051AC5216BF047004F35AA /* Debug */,
+				D9051AC6216BF047004F35AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9051AC7216BF047004F35AA /* Build configuration list for PBXNativeTarget "EverpobreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9051AC8216BF047004F35AA /* Debug */,
+				D9051AC9216BF047004F35AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D9051AE5216D3CFD004F35AA /* Everpobre.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D96D6DD02180B096004EB54D /* Everpobre_v2.xcdatamodel */,
+				D9051AE6216D3CFD004F35AA /* Everpobre.xcdatamodel */,
+			);
+			currentVersion = D96D6DD02180B096004EB54D /* Everpobre_v2.xcdatamodel */;
+			path = Everpobre.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D9051A9F216BF045004F35AA /* Project object */;
+}
