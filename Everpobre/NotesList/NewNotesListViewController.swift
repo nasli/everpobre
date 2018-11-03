@@ -11,10 +11,12 @@ import CoreData
 
 class NewNotesListViewController: UIViewController {
 
+    // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
 
+    // MARK: - Properties
+    
     let notebook: Notebook
-//    let managedContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack!
 
     var notes: [Note] = [] {
@@ -24,6 +26,8 @@ class NewNotesListViewController: UIViewController {
     }
 
     let transition = Animator()
+
+    // MARK: - Initialization
 
     init(notebook: Notebook, coreDataStack: CoreDataStack) {
         self.notebook = notebook
@@ -36,19 +40,33 @@ class NewNotesListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Notas"
-        self.view.backgroundColor = .white
-
         let nib = UINib(nibName: "NotesListCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "NotesListCollectionViewCell")
+
+        setupUI()
+    }
+
+    // MARK: - SetUp UI
+
+    private func setupUI() {
+        title = "Notas"
+        self.view.backgroundColor = .white
 
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
         let exportButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportCSV))
 
         self.navigationItem.rightBarButtonItems = [addButtonItem, exportButtonItem]
+    }
+
+    @objc private func addNote() {
+        let newNoteVC = NoteDetailsViewController(kind: .new(notebook: notebook), managedContext: coreDataStack.managedContext)
+        newNoteVC.delegate = self
+        let navVC = UINavigationController(rootViewController: newNoteVC)
+        self.present(navVC, animated: true, completion: nil)
     }
 
     @objc private func exportCSV() {
@@ -94,6 +112,7 @@ class NewNotesListViewController: UIViewController {
         }
     }
 
+    // MARK: - Alert
     private func showExportFinishedAlert(_ exportPath: String) {
         let message = "CSV file is in \(exportPath)"
         let alertController = UIAlertController(title: "Exported", message: message, preferredStyle: .alert)
@@ -103,6 +122,7 @@ class NewNotesListViewController: UIViewController {
         present(alertController, animated: true)
     }
 
+    // MARK: - FetchRequest Note
     private func notesFetchRequest(from notebook: Notebook) -> NSFetchRequest<Note> {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.fetchBatchSize = 50
@@ -112,14 +132,9 @@ class NewNotesListViewController: UIViewController {
         return fetchRequest
     }
 
-
-    @objc private func addNote() {
-        let newNoteVC = NoteDetailsViewController(kind: .new(notebook: notebook), managedContext: coreDataStack.managedContext)
-        newNoteVC.delegate = self
-        let navVC = UINavigationController(rootViewController: newNoteVC)
-        self.present(navVC, animated: true, completion: nil)
-    }
 }
+
+// MARK:- UICollectionView DataSource
 
 extension NewNotesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -134,12 +149,17 @@ extension NewNotesListViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension NewNotesListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 150)
     }
 }
+
+
+// MARK: - UICollectionViewDelegate
 
 extension NewNotesListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -151,15 +171,18 @@ extension NewNotesListViewController: UICollectionViewDelegate {
         let navVC = UINavigationController(rootViewController: detailVC)
         navVC.transitioningDelegate = self
         present(navVC, animated: true, completion: nil)
-
     }
 }
+
+// MARK:- NoteDetailsViewControllerProtocol implementation
 
 extension NewNotesListViewController: NoteDetailsViewControllerProtocol {
     func didSaveNote() {
         notes = (notebook.notes?.array as? [Note]) ?? []
     }
 }
+
+// MARK:- Custom Animation - UIViewControllerTransitioningDelegate
 
 extension NewNotesListViewController: UIViewControllerTransitioningDelegate {
 

@@ -21,7 +21,6 @@ class NotebookListCell: UITableViewCell {
     func configure(with notebook: Notebook) {
         titleLabel.text = notebook.name
 
-        creationDateLabel.text = "Creado: \((notebook.creationDate as Date?)?.customStringLabel() ?? "ND")"
-
+        creationDateLabel.text = "Create: \((notebook.creationDate as Date?)?.customStringLabel() ?? "ND")"
     }
 }

@@ -11,6 +11,7 @@ import CoreData
 
 class NotesListViewController: UIViewController {
 
+    // MARK: - Properties
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,29 +21,18 @@ class NotesListViewController: UIViewController {
     let notebook: Notebook
     let managedContext: NSManagedObjectContext
 
-//    var notes: [Note] = [] {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-
-//    var notes: [Note] {
-//        guard let notes = notebook.notes?.array else { return [] }
-//
-//        return notes as! [Note]
-//    }
-
     var notes: [Note] {
         didSet {
             tableView.reloadData()
         }
     }
 
+    // MARK: - Initialization
+
     init(notebook: Notebook, managedContext: NSManagedObjectContext) {
         self.notebook = notebook
         self.managedContext = managedContext
         self.notes = notebook.notes?.array as? [Note] ?? []
-       // self.notes = notebook.notes
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -50,19 +40,21 @@ class NotesListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     //   self.navigationController?.navigationBar.isTranslucent = false
-        
-        //title = "Notas de: \(notebook.name)"
-        title = "Notas"
+        setupUI()
+        setupTableView()
+    }
 
+    // MARK: - SetUp UI
+
+    private func setupUI() {
+        title = "Notas"
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add
             , target: self, action: #selector(addNote))
         navigationItem.rightBarButtonItem = addButtonItem
-
-        setupTableView()
     }
 
     @objc private func addNote() {
@@ -85,6 +77,7 @@ class NotesListViewController: UIViewController {
     }
 }
 
+// MARK: - TableView dataSouce
 extension NotesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
@@ -98,16 +91,16 @@ extension NotesListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TableView delegate
 extension NotesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let detailVC = NoteDetailsViewController(note: notes[indexPath.row])
         let detailVC = NoteDetailsViewController(kind: .existing(note: notes[indexPath.row]), managedContext: managedContext)
         detailVC.delegate = self
         show(detailVC, sender: nil)
-
     }
 }
 
+// MARK: - NoteDetailsViewControllerProtocol
 extension NotesListViewController: NoteDetailsViewControllerProtocol {
     func didSaveNote() {
         notes = (notebook.notes?.array as? [Note]) ?? []

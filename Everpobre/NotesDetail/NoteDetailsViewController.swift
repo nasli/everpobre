@@ -14,7 +14,8 @@ protocol NoteDetailsViewControllerProtocol: class {
 }
 
 class NoteDetailsViewController: UIViewController {
-    
+
+    // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tagsLabel: UILabel!
@@ -22,12 +23,7 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var lastSeenDateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
 
- //   let note: Note
-//    init(note: Note) {
-//        self.note = note
-//        super.init(nibName: "NoteDetailsViewController", bundle: nil)
-//    }
-
+    // MARK: - Properties
     enum Kind {
         case new(notebook: Notebook)
         case existing(note: Note)
@@ -38,6 +34,7 @@ class NoteDetailsViewController: UIViewController {
 
     weak var delegate: NoteDetailsViewControllerProtocol?
 
+    // MARK: - Initialization
     init(kind: Kind, managedContext: NSManagedObjectContext) {
         self.kind = kind
         self.managedContext = managedContext
@@ -47,20 +44,22 @@ class NoteDetailsViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
-        configureValues()
+        setupUI()
+        syncModelWithView()
     }
 
-    private func configure() {
+    // MARK: - SetUp UI
+
+    private func setupUI() {
         let saveButtonItem = UIBarButtonItem(barButtonSystemItem: .save
             , target: self, action: #selector(saveNote))
         self.navigationItem.rightBarButtonItem = saveButtonItem
         let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         self.navigationItem.leftBarButtonItem = cancelButtonItem
-        configureValues()
     }
 
     @objc private func saveNote() {
@@ -100,7 +99,6 @@ class NoteDetailsViewController: UIViewController {
             }
         }
 
-
         do {
             try managedContext.save()
             delegate?.didSaveNote()
@@ -108,27 +106,40 @@ class NoteDetailsViewController: UIViewController {
             print("error: \(error.localizedDescription)")
         }
 
-
-        switch kind {
-        case .existing:
-            navigationController?.popViewController(animated: true)
-        case .new:
-            dismiss(animated: true, completion: nil)
-        }
-
+        dismiss(animated: true, completion: nil)
     }
 
     @objc private func cancel() {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func pickImage(_ sender: Any) {
+    // MARK: - Sync
+    private func syncModelWithView() {
+
+        title = kind.title
+        titleTextField.text = kind.note?.title
+        //tagsLabel.text = note.tags?.joined(separator: ",")
+        creationDateLabel.text = "Creado: \((kind.note?.creationDate as Date?)?.customStringLabel() ?? "ND")"
+        lastSeenDateLabel.text = "Visto: \((kind.note?.lastSeenDate as Date?)?.customStringLabel() ?? "ND")"
+        descriptionTextView.text = kind.note?.text ?? "Ingrese texto..."
+
+        guard let data = kind.note?.image as Data? else {
+            imageView.image = #imageLiteral(resourceName: "120x180.png")
+            return
+        }
+        imageView.image = UIImage(data: data)
+    }
+
+    // MARK: - IBActions
+    @IBAction private func pickImage(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             showPhotoMenu()
         } else {
             choosePhotoFromLibrary()
         }
     }
+
+    // MARK: - Photo Menu
 
     private func showPhotoMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -159,45 +170,6 @@ class NoteDetailsViewController: UIViewController {
         imagePicker.allowsEditing = true
 
         present(imagePicker, animated: true, completion: nil)
-    }
-
-    private func configureValues() {
-//        title = "Detail"
-//        titleLabel.text = note.title
-//        creationDateLabel.text = "Creado: \((note.creationDate as Date?)?.customStringLabel() ?? "ND")"
-//        lastSeenDateLabel.text = "Visto: \((note.lastSeenDate as Date?)?.customStringLabel() ?? "ND")"
-//        descriptionTextView.text = note.text ?? "Enter text..."
-
-        title = kind.title
-        titleTextField.text = kind.note?.title
-        //tagsLabel.text = note.tags?.joined(separator: ",")
-        creationDateLabel.text = "Creado: \((kind.note?.creationDate as Date?)?.customStringLabel() ?? "ND")"
-        lastSeenDateLabel.text = "Visto: \((kind.note?.lastSeenDate as Date?)?.customStringLabel() ?? "ND")"
-        descriptionTextView.text = kind.note?.text ?? "Ingrese texto..."
-
-        guard let data = kind.note?.image as Data? else {
-            imageView.image = #imageLiteral(resourceName: "120x180.png")
-            return
-        }
-        imageView.image = UIImage(data: data)
-    }
-
-}
-
-
-private extension NoteDetailsViewController.Kind {
-    var note: Note? {
-        guard case let .existing(note) = self else { return nil }
-        return note
-    }
-
-    var title: String {
-        switch self {
-        case .existing:
-            return "Detalle"
-        case .new:
-            return "Nueva Nota"
-        }
     }
 }
 
@@ -236,5 +208,22 @@ extension NoteDetailsViewController: UIImagePickerControllerDelegate, UINavigati
         }
 
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - NoteDetailsViewController.Kind
+private extension NoteDetailsViewController.Kind {
+    var note: Note? {
+        guard case let .existing(note) = self else { return nil }
+        return note
+    }
+
+    var title: String {
+        switch self {
+        case .existing:
+            return "Detalle"
+        case .new:
+            return "Nueva Nota"
+        }
     }
 }

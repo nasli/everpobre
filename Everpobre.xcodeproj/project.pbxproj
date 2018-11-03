@@ -122,6 +122,7 @@
 		D9051AA9216BF046004F35AA /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
+				D9BE675F218E283C007098E4 /* Additions */,
 				D9051AE0216D2F9A004F35AA /* Utils */,
 				D9051AD3216BFCBC004F35AA /* Model */,
 				D9051AD0216BFB46004F35AA /* NotebookList */,
@@ -159,6 +160,7 @@
 		D9051AD3216BFCBC004F35AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D9051AE3216D38E0004F35AA /* CoreDataStack.swift */,
 				D9051AFC216FCAFD004F35AA /* Note+CoreDataClass.swift */,
 				D9051AFD216FCAFE004F35AA /* Note+CoreDataProperties.swift */,
 				D9051AFE216FCAFE004F35AA /* Notebook+CoreDataClass.swift */,
@@ -193,14 +195,20 @@
 		D9051AE0216D2F9A004F35AA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D96D6DD721829525004EB54D /* Animator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D9BE675F218E283C007098E4 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
 				D96D6DD121813ED3004EB54D /* UIImage+Alpha.swift */,
 				D96D6DD221813ED3004EB54D /* UIImage+ReSize.swift */,
 				D96D6DD321813ED3004EB54D /* UIImage+RoundCorner.swift */,
 				D9051AE1216D2FB1004F35AA /* Date+Utils.swift */,
-				D9051AE3216D38E0004F35AA /* CoreDataStack.swift */,
-				D96D6DD721829525004EB54D /* Animator.swift */,
 			);
-			path = Utils;
+			path = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
