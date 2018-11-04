@@ -20,6 +20,7 @@
                 <outlet property="lastSeenDateLabel" destination="ZSL-B0-bod" id="xQI-pL-PlW"/>
                 <outlet property="map" destination="7r2-KV-0PM" id="Ggw-r1-DyU"/>
                 <outlet property="tagsLabel" destination="k4t-KR-cd5" id="4iN-Jr-io9"/>
+                <outlet property="tagsTextField" destination="lit-GY-ibS" id="HHI-s5-Ueb"/>
                 <outlet property="titleTextField" destination="GhQ-Nk-9GS" id="QM5-GW-eMX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -93,8 +94,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-KR-cd5">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tags Text Field" borderStyle="roundedRect" placeholder="Tag1, tag2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lit-GY-ibS">
                                                     <rect key="frame" x="41" y="0.0" width="166" height="50"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4t-KR-cd5">
+                                                    <rect key="frame" x="207" y="0.0" width="0.0" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -26,7 +26,8 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var addMyLocationButton: UIButton!
     @IBOutlet weak var map: MKMapView!
-
+    @IBOutlet weak var tagsTextField: UITextField!
+    
     // MARK: - Properties
     enum Kind {
         case new(notebook: Notebook)
@@ -100,6 +101,8 @@ class NoteDetailsViewController: UIViewController {
                 note.longitude = self.location!.longitude
             }
 
+            note.tags = tagsTextField.text
+
             return note
         }
 
@@ -157,6 +160,8 @@ class NoteDetailsViewController: UIViewController {
         } else {
             map.isHidden = true
         }
+        // TODO: Replace with Tags objects
+        tagsTextField.text = kind.note?.tags
 
     }
 
