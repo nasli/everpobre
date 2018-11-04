@@ -78,16 +78,16 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="172-Xs-KyP">
-                                <rect key="frame" x="0.0" y="530.5" width="375" height="20.5"/>
+                                <rect key="frame" x="10" y="530.5" width="355" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Total de Notebooks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZJ-YX-13m">
-                                        <rect key="frame" x="0.0" y="0.0" width="333.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzQ-Kn-wkA">
-                                        <rect key="frame" x="341.5" y="0.0" width="33.5" height="20.5"/>
+                                        <rect key="frame" x="321.5" y="0.0" width="33.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -98,9 +98,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g2c-ZT-dAz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1WG-lf-xFt"/>
-                            <constraint firstItem="172-Xs-KyP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Mp-tY-JKB"/>
+                            <constraint firstItem="172-Xs-KyP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="8Mp-tY-JKB"/>
                             <constraint firstItem="g2c-ZT-dAz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="En7-Zb-WYp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="172-Xs-KyP" secondAttribute="trailing" id="RUB-91-qLH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="172-Xs-KyP" secondAttribute="trailing" constant="10" id="RUB-91-qLH"/>
                             <constraint firstItem="172-Xs-KyP" firstAttribute="top" secondItem="g2c-ZT-dAz" secondAttribute="bottom" id="Vw5-Hc-dmR"/>
                             <constraint firstItem="g2c-ZT-dAz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="blX-TF-q6l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="172-Xs-KyP" secondAttribute="bottom" id="lto-yE-GY9"/>

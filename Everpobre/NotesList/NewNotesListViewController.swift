@@ -19,6 +19,7 @@ class NewNotesListViewController: UIViewController {
     @IBOutlet weak var numberOfVisibleAnnotations: UILabel!
     
     @IBOutlet weak var numberVisibleAnnotationsStackView: UIStackView!
+    @IBOutlet weak var addNewNoteButton: UIButton!
     // MARK: - Properties
     
     let notebook: Notebook
@@ -53,6 +54,16 @@ class NewNotesListViewController: UIViewController {
         collectionView.register(nib, forCellWithReuseIdentifier: "NotesListCollectionViewCell")
 
         setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        if notes.count > 0 {
+            addNewNoteButton.isHidden = true
+        } else {
+            addNewNoteButton.isHidden = false
+        }
     }
 
     // MARK: - SetUp UI
@@ -146,6 +157,10 @@ class NewNotesListViewController: UIViewController {
     }
 
     // MARK: - IBActions
+    @IBAction func addNewNoteButtonTapped(_ sender: Any) {
+        self.addNote()
+        
+    }
     @IBAction func segmentedControlTapped(_ sender: Any) {
 
         switch segmentedControl.selectedSegmentIndex {

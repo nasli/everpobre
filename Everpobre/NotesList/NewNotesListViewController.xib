@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewNotesListViewController" customModule="Everpobre" customModuleProvider="target">
             <connections>
+                <outlet property="addNewNoteButton" destination="v3Y-9u-9km" id="yPt-Vz-8c0"/>
                 <outlet property="collectionView" destination="mK5-gt-bpg" id="PXg-XB-SK3"/>
                 <outlet property="map" destination="ZZj-Vu-075" id="ok7-QZ-0kL"/>
                 <outlet property="numberOfVisibleAnnotations" destination="Z1o-cA-dG9" id="W3J-Sn-KVu"/>
@@ -73,6 +74,13 @@
                         </label>
                     </subviews>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3Y-9u-9km">
+                    <rect key="frame" x="138" y="318.5" width="99" height="30"/>
+                    <state key="normal" title="Add new note "/>
+                    <connections>
+                        <action selector="addNewNoteButtonTapped:" destination="-1" eventType="touchUpInside" id="0oe-BH-vxi"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -80,6 +88,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="54b-cP-qcy" secondAttribute="trailing" constant="16" id="Bwn-Gb-cW3"/>
                 <constraint firstItem="MLh-Yv-McK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Idm-m5-huf"/>
                 <constraint firstItem="ZZj-Vu-075" firstAttribute="top" secondItem="54b-cP-qcy" secondAttribute="bottom" constant="19" id="J8z-V8-SS9"/>
+                <constraint firstItem="v3Y-9u-9km" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Jk4-rG-IAG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mK5-gt-bpg" secondAttribute="trailing" id="L4d-Xk-bF9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mK5-gt-bpg" secondAttribute="bottom" id="Tgu-Sd-0FB"/>
                 <constraint firstItem="54b-cP-qcy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WOs-Ak-CCQ"/>
@@ -87,6 +96,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MLh-Yv-McK" secondAttribute="trailing" constant="16" id="hed-oX-b1v"/>
                 <constraint firstItem="mK5-gt-bpg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="it2-Iy-zxc"/>
                 <constraint firstItem="54b-cP-qcy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="mNN-NU-bxO"/>
+                <constraint firstItem="v3Y-9u-9km" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mOr-S7-NIc"/>
                 <constraint firstItem="MLh-Yv-McK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vtL-AP-6uN"/>
                 <constraint firstItem="ZZj-Vu-075" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="wDF-x6-i0Z"/>
                 <constraint firstItem="ZZj-Vu-075" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="x6P-Pc-ynd"/>

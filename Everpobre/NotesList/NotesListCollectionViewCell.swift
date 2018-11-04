@@ -33,3 +33,4 @@ class NotesListCollectionViewCell: UICollectionViewCell {
 
     }
 }
+
