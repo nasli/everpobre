@@ -8,12 +8,17 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 class NewNotesListViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var numberOfVisibleAnnotations: UILabel!
+    
+    @IBOutlet weak var numberVisibleAnnotationsStackView: UIStackView!
     // MARK: - Properties
     
     let notebook: Notebook
@@ -132,6 +137,33 @@ class NewNotesListViewController: UIViewController {
         return fetchRequest
     }
 
+    // MARK: - IBActions
+    @IBAction func segmentedControlTapped(_ sender: Any) {
+
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            print("First Segment Selected")
+            map.isHidden = true
+            
+        case 1:
+            print("Second Segment Selected")
+            map.isHidden = false
+            showAnnotationsInMap()
+
+        default:
+            break
+        }
+    }
+
+    func showAnnotationsInMap() {
+        for note in notes {
+            if let latitude = note.latitude, let longitude = note.longitude {
+                map.addCenterMapAnnotation(latitude: latitude as! Double, longitude: longitude as! Double, title: note.title!)
+            }
+        }
+        
+    }
+
 }
 
 // MARK:- UICollectionView DataSource
@@ -202,3 +234,6 @@ extension NewNotesListViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
+extension NewNotesListViewController: MKMapViewDelegate {
+
+}

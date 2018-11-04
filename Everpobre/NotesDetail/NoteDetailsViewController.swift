@@ -160,7 +160,7 @@ class NoteDetailsViewController: UIViewController {
         map.isHidden = true
         if let latitude = kind.note?.latitude, let longitude = kind.note?.longitude {
             map.isHidden = false
-            addCenterMapAnnotation(latitude: Double(truncating: latitude), longitude: Double(truncating: longitude))
+            map.addCenterMapAnnotation(latitude: latitude as! Double, longitude: longitude as! Double)
         }
         
         // TODO: Replace with Tags objects
@@ -234,19 +234,6 @@ class NoteDetailsViewController: UIViewController {
 
         present(imagePicker, animated: true, completion: nil)
     }
-
-    // MARK: - Map Annotation
-    func addCenterMapAnnotation(latitude: Double, longitude: Double) {
-
-        let location = CLLocationCoordinate2D(latitude: latitude, longitude:longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location, span: span)
-        self.map.setRegion(region, animated: true)
-
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        map.addAnnotation(annotation)
-    }
 }
 
 extension NoteDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -314,7 +301,7 @@ extension NoteDetailsViewController: CLLocationManagerDelegate, MKMapViewDelegat
 
         let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
 
-        addCenterMapAnnotation(latitude: location.latitude, longitude: location.longitude)
+        map.addCenterMapAnnotation(latitude: location.latitude, longitude: location.longitude)
 
         self.location = location
 

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewNotesListViewController" customModule="Everpobre" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="mK5-gt-bpg" id="Ldr-wz-44O"/>
+                <outlet property="collectionView" destination="mK5-gt-bpg" id="PXg-XB-SK3"/>
+                <outlet property="map" destination="ZZj-Vu-075" id="ok7-QZ-0kL"/>
+                <outlet property="numberOfVisibleAnnotations" destination="Z1o-cA-dG9" id="W3J-Sn-KVu"/>
+                <outlet property="numberVisibleAnnotationsStackView" destination="MLh-Yv-McK" id="aR7-DS-8lH"/>
+                <outlet property="segmentedControl" destination="54b-cP-qcy" id="CTU-P7-6W2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mK5-gt-bpg">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="60X-OD-2km">
                         <size key="itemSize" width="50" height="50"/>
@@ -34,15 +39,62 @@
                         <outlet property="delegate" destination="-1" id="KHy-AV-hx6"/>
                     </connections>
                 </collectionView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="54b-cP-qcy">
+                    <rect key="frame" x="16" y="39" width="343" height="29"/>
+                    <segments>
+                        <segment title="List"/>
+                        <segment title="Map"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentedControlTapped:" destination="-1" eventType="valueChanged" id="HrF-8m-usk"/>
+                    </connections>
+                </segmentedControl>
+                <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZZj-Vu-075">
+                    <rect key="frame" x="0.0" y="86" width="375" height="581"/>
+                </mapView>
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-Yv-McK" userLabel="Number Visible Annotations Stack View">
+                    <rect key="frame" x="16" y="646.5" width="343" height="20.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" verticalHuggingPriority="252" text="Showing:  " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCu-wp-sJA">
+                            <rect key="frame" x="0.0" y="0.0" width="307.5" height="20.5"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1o-cA-dG9">
+                            <rect key="frame" x="332.5" y="0.0" width="10.5" height="20.5"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="MLh-Yv-McK" secondAttribute="bottom" id="2fQ-cj-JEd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="54b-cP-qcy" secondAttribute="trailing" constant="16" id="Bwn-Gb-cW3"/>
+                <constraint firstItem="MLh-Yv-McK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Idm-m5-huf"/>
+                <constraint firstItem="ZZj-Vu-075" firstAttribute="top" secondItem="54b-cP-qcy" secondAttribute="bottom" constant="19" id="J8z-V8-SS9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mK5-gt-bpg" secondAttribute="trailing" id="L4d-Xk-bF9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mK5-gt-bpg" secondAttribute="bottom" id="Tgu-Sd-0FB"/>
+                <constraint firstItem="54b-cP-qcy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WOs-Ak-CCQ"/>
+                <constraint firstItem="ZZj-Vu-075" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Zqf-dE-bJZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MLh-Yv-McK" secondAttribute="trailing" constant="16" id="hed-oX-b1v"/>
                 <constraint firstItem="mK5-gt-bpg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="it2-Iy-zxc"/>
-                <constraint firstItem="mK5-gt-bpg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xJW-c6-kiL"/>
+                <constraint firstItem="54b-cP-qcy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="mNN-NU-bxO"/>
+                <constraint firstItem="MLh-Yv-McK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vtL-AP-6uN"/>
+                <constraint firstItem="ZZj-Vu-075" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="wDF-x6-i0Z"/>
+                <constraint firstItem="ZZj-Vu-075" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="x6P-Pc-ynd"/>
+                <constraint firstItem="mK5-gt-bpg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="xJW-c6-kiL"/>
+                <constraint firstItem="54b-cP-qcy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="19" id="zqe-tb-9BG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="100" y="98.50074962518741"/>
         </view>
     </objects>
 </document>
