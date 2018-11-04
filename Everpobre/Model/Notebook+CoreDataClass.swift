@@ -14,3 +14,12 @@ import CoreData
 public class Notebook: NSManagedObject {
 
 }
+
+extension Notebook {
+    func csv() -> String {
+        let exportedCreationDate = (creationDate as Date?)?.customStringLabel().replacingOccurrences(of: ",", with: ".") ?? "ND"
+        let exportedTitle = name!
+
+        return "\(exportedCreationDate),\(exportedTitle)"
+    }
+}

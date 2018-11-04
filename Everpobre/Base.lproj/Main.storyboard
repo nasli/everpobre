@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -107,11 +108,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notebooks" id="f0k-5h-byz" userLabel="Notebooks">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NE8-pm-8a6">
-                            <connections>
-                                <action selector="addNotebook:" destination="BYZ-38-t0r" id="rfy-CS-jde"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="NE8-pm-8a6">
+                                <connections>
+                                    <action selector="addNotebook:" destination="BYZ-38-t0r" id="rfy-CS-jde"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="tQ7-p0-Rx6">
+                                <connections>
+                                    <action selector="shareNotebooks:" destination="BYZ-38-t0r" id="Xys-wj-qfM"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="g2c-ZT-dAz" id="rrx-CU-fSB"/>

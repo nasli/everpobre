@@ -89,7 +89,7 @@ class NotebookListViewController: UIViewController {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - IBActions
 
     @IBAction func addNotebook(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "New Notebook", message: "Add new notebook", preferredStyle: .alert)
@@ -120,6 +120,77 @@ class NotebookListViewController: UIViewController {
 
         present(alert, animated: true)
     }
+
+
+    @IBAction func shareNotebooks(_ sender: Any) {
+        
+        shareCSVofNotebooks()
+    }
+
+    private func shareCSVofNotebooks() {
+
+        coreDataStack.storeContainer.performBackgroundTask { [unowned self] (context) in
+
+            var results: [Notebook] = []
+
+            do {
+                results = try self.coreDataStack.managedContext.fetch(Notebook.fetchRequest())
+
+            } catch let error as NSError {
+                print("Error:\(error.localizedDescription)")
+            }
+
+            let exportPath = NSTemporaryDirectory() + "exportNotebooks.csv"
+            let exportURL = URL(fileURLWithPath: exportPath)
+            FileManager.default.createFile(atPath: exportPath, contents: Data(), attributes: nil)
+
+            let fileHandle: FileHandle?
+            do {
+                fileHandle = try FileHandle(forWritingTo: exportURL)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+                fileHandle = nil
+            }
+
+            if let fileHandle = fileHandle {
+                let csvHeader = "Notebook CreationDate, Notebook Title, Note CreationDate, Note UpdatedDate, Note Title, Note Tags, Note Text\n \n"
+                guard let csvNotebookHeaderData = csvHeader.data(using: .utf8, allowLossyConversion: false) else { return }
+                fileHandle.write(csvNotebookHeaderData)
+
+                for notebook in results {
+
+                    guard let notes: [Note] = notebook.notes?.array as? [Note]
+                    else {
+                        fileHandle.seekToEndOfFile()
+                        guard let csvNotebookDataLine = notebook.csv().data(using: .utf8, allowLossyConversion: false) else { return }
+                        fileHandle.write(csvNotebookDataLine)
+                        return
+                    }
+                    for note: Note in notes {
+                        fileHandle.seekToEndOfFile()
+                        let csvStringLine = notebook.csv() + "," + note.csv()
+                        guard let csvDataLine = csvStringLine.data(using: .utf8, allowLossyConversion: false) else { return }
+
+                        fileHandle.write(csvDataLine)
+                    }
+                }
+
+                fileHandle.closeFile()
+                
+                DispatchQueue.main.async { [weak self] in
+
+                    let activityViewController = UIActivityViewController(
+                        activityItems: ["CSV with all Notebooks and Notes", URL(fileURLWithPath: exportPath) ],
+                        applicationActivities: nil)
+                    self?.present(activityViewController, animated: true, completion: nil)
+                }
+
+            } else {
+                print("data not exported")
+            }
+        }
+    }
+
 }
 
 // MARK: - TableView DataSource

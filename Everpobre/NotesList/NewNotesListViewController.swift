@@ -100,7 +100,7 @@ class NewNotesListViewController: UIViewController {
             }
 
             if let fileHandle = fileHandle {
-                let csvHeader = "CreationDate, Year, Title, Tags, Text\n"
+                let csvHeader = "CreationDate, Title, Tags, Text\n"
                 guard let csvHeaderData = csvHeader.data(using: .utf8, allowLossyConversion: false) else { return }
                 fileHandle.write(csvHeaderData)
                 for note in results {

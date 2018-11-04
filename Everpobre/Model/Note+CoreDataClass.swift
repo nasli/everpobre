@@ -17,12 +17,13 @@ public class Note: NSManagedObject {
 
 extension Note {
     func csv() -> String {
-        let exportedTitle = title ?? "Sin Titulo"
-        let tagsReplacedCommas = tags!.replacingOccurrences(of: ",", with: ".")
-        let exportedTags = tagsReplacedCommas
-        let exportedText = text ?? ""
-        let exportedCreationDate = (creationDate as Date?)?.customStringLabel() ?? "ND"
 
-        return "\(exportedCreationDate),\(exportedTitle),\(exportedTags),\(exportedText)\n"
+        let exportedCreationDate = (creationDate as Date?)?.customStringLabel().replacingOccurrences(of: ",", with: ".") ?? "ND"
+        let exportedUpdatedDate = (lastSeenDate as Date?)?.customStringLabel().replacingOccurrences(of: ",", with: ".") ?? "ND"
+        let exportedTitle = title!
+        let exportedTags = tags!.replacingOccurrences(of: ",", with: ".")
+        let exportedText = text!
+
+        return "\(exportedCreationDate),\(exportedUpdatedDate),\(exportedTitle),\(exportedTags),\(exportedText)\n"
     }
 }

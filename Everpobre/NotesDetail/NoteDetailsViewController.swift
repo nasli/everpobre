@@ -106,6 +106,8 @@ class NoteDetailsViewController: UIViewController {
 
             note.tags = tagsTextField.text
 
+            note.lastSeenDate = NSDate()
+
             return note
         }
 
@@ -113,7 +115,6 @@ class NoteDetailsViewController: UIViewController {
         case .existing(let note):
             // modify note
             let modifiedNote = addProperties(to: note)
-            modifiedNote.lastSeenDate = NSDate()
 
         case .new(let notebook):
             let note = Note(context: managedContext)
@@ -147,8 +148,8 @@ class NoteDetailsViewController: UIViewController {
         title = kind.title
         titleTextField.text = kind.note?.title
         //tagsLabel.text = note.tags?.joined(separator: ",")
-        creationDateLabel.text = "Creado: \((kind.note?.creationDate as Date?)?.customStringLabel() ?? "ND")"
-        lastSeenDateLabel.text = "Visto: \((kind.note?.lastSeenDate as Date?)?.customStringLabel() ?? "ND")"
+        creationDateLabel.text = "\((kind.note?.creationDate as Date?)?.customStringLabel() ?? "ND")"
+        lastSeenDateLabel.text = "\((kind.note?.lastSeenDate as Date?)?.customStringLabel() ?? "ND")"
         descriptionTextView.text = kind.note?.text ?? "Ingrese texto..."
 
         guard let data = kind.note?.image as Data? else {
