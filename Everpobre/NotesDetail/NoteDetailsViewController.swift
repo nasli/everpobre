@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import MapKit
+import CoreLocation
 
 protocol NoteDetailsViewControllerProtocol: class {
     func didSaveNote()
@@ -22,6 +24,8 @@ class NoteDetailsViewController: UIViewController {
     @IBOutlet weak var creationDateLabel: UILabel!
     @IBOutlet weak var lastSeenDateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var addMyLocationButton: UIButton!
+    @IBOutlet weak var map: MKMapView!
 
     // MARK: - Properties
     enum Kind {
@@ -34,10 +38,14 @@ class NoteDetailsViewController: UIViewController {
 
     weak var delegate: NoteDetailsViewControllerProtocol?
 
+    var locationManager = CLLocationManager()
+    var location: CLLocationCoordinate2D?
+
     // MARK: - Initialization
     init(kind: Kind, managedContext: NSManagedObjectContext) {
         self.kind = kind
         self.managedContext = managedContext
+        self.location = nil
         super.init(nibName: "NoteDetailsViewController", bundle: nil)
     }
 
@@ -48,11 +56,19 @@ class NoteDetailsViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupLocation()
         setupUI()
         syncModelWithView()
     }
 
-    // MARK: - SetUp UI
+
+    // MARK: - SetUp
+
+    func setupLocation() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
 
     private func setupUI() {
         let saveButtonItem = UIBarButtonItem(barButtonSystemItem: .save
@@ -60,6 +76,7 @@ class NoteDetailsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = saveButtonItem
         let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         self.navigationItem.leftBarButtonItem = cancelButtonItem
+
     }
 
     @objc private func saveNote() {
@@ -77,6 +94,11 @@ class NoteDetailsViewController: UIViewController {
             }
 
             note.image = imageData
+
+            if location != nil {
+                note.latitude = self.location!.latitude
+                note.longitude = self.location!.longitude
+            }
 
             return note
         }
@@ -128,14 +150,47 @@ class NoteDetailsViewController: UIViewController {
             return
         }
         imageView.image = UIImage(data: data)
+
+        if let latitude = kind.note?.latitude, let longitude = kind.note?.longitude {
+            map.isHidden = false
+            addCenterMapAnnotation(latitude: latitude, longitude: longitude)
+        } else {
+            map.isHidden = true
+        }
+
     }
 
     // MARK: - IBActions
+
     @IBAction private func pickImage(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             showPhotoMenu()
         } else {
             choosePhotoFromLibrary()
+        }
+    }
+
+
+    @IBAction func addMyLocationTapped(_ sender: Any) {
+
+        map.isHidden = false
+
+        if CLLocationManager.locationServicesEnabled() {
+            print("Location Services Enabled")
+            let status  = CLLocationManager.authorizationStatus()
+            if status == .notDetermined {
+                locationManager.requestWhenInUseAuthorization()
+            } else if status == .restricted || status == .denied {
+                print("Location Services NOT Authorized")
+
+                let alert = UIAlertController(title: "Location Services NOT Authorized", message: "Please enable Location Services in Settings", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
+            }
+            locationManager.startUpdatingLocation()
+        } else {
+            print("Location Services NOT Enabled")
         }
     }
 
@@ -170,6 +225,19 @@ class NoteDetailsViewController: UIViewController {
         imagePicker.allowsEditing = true
 
         present(imagePicker, animated: true, completion: nil)
+    }
+
+    // MARK: - Map Annotation
+    func addCenterMapAnnotation(latitude: Double, longitude: Double) {
+
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude:longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.map.setRegion(region, animated: true)
+
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        map.addAnnotation(annotation)
     }
 }
 
@@ -221,9 +289,26 @@ private extension NoteDetailsViewController.Kind {
     var title: String {
         switch self {
         case .existing:
-            return "Detalle"
+            return "Details"
         case .new:
-            return "Nueva Nota"
+            return "New note"
         }
+    }
+}
+
+// MARK: - Location
+extension NoteDetailsViewController: CLLocationManagerDelegate, MKMapViewDelegate {
+
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        locationManager.stopUpdatingLocation()
+
+        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+
+        addCenterMapAnnotation(latitude: location.latitude, longitude: location.longitude)
+
+        self.location = location
+
     }
 }

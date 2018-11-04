@@ -35,6 +35,7 @@
 		D96D6DD521813ED3004EB54D /* UIImage+ReSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD221813ED3004EB54D /* UIImage+ReSize.swift */; };
 		D96D6DD621813ED3004EB54D /* UIImage+RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD321813ED3004EB54D /* UIImage+RoundCorner.swift */; };
 		D96D6DD821829525004EB54D /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96D6DD721829525004EB54D /* Animator.swift */; };
+		D9BE6763218E6FBA007098E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9BE6762218E6FBA007098E4 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		D96D6DD221813ED3004EB54D /* UIImage+ReSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+ReSize.swift"; sourceTree = "<group>"; };
 		D96D6DD321813ED3004EB54D /* UIImage+RoundCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundCorner.swift"; sourceTree = "<group>"; };
 		D96D6DD721829525004EB54D /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		D9BE6760218E3738007098E4 /* Everpobre_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Everpobre_v3.xcdatamodel; sourceTree = "<group>"; };
+		D9BE6762218E6FBA007098E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9BE6763218E6FBA007098E4 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,7 @@
 				D9051AA9216BF046004F35AA /* Everpobre */,
 				D9051ABE216BF047004F35AA /* EverpobreTests */,
 				D9051AA8216BF046004F35AA /* Products */,
+				D9BE6761218E6FB9007098E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +214,14 @@
 				D9051AE1216D2FB1004F35AA /* Date+Utils.swift */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		D9BE6761218E6FB9007098E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9BE6762218E6FBA007098E4 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -609,10 +622,11 @@
 		D9051AE5216D3CFD004F35AA /* Everpobre.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D9BE6760218E3738007098E4 /* Everpobre_v3.xcdatamodel */,
 				D96D6DD02180B096004EB54D /* Everpobre_v2.xcdatamodel */,
 				D9051AE6216D3CFD004F35AA /* Everpobre.xcdatamodel */,
 			);
-			currentVersion = D96D6DD02180B096004EB54D /* Everpobre_v2.xcdatamodel */;
+			currentVersion = D9BE6760218E3738007098E4 /* Everpobre_v3.xcdatamodel */;
 			path = Everpobre.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

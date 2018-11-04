@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -12,10 +13,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteDetailsViewController" customModule="Everpobre" customModuleProvider="target">
             <connections>
+                <outlet property="addMyLocationButton" destination="SXg-Lu-Iaz" id="K2Z-Wn-3Ef"/>
                 <outlet property="creationDateLabel" destination="ZCC-X6-Ath" id="a6x-Hc-5Sd"/>
                 <outlet property="descriptionTextView" destination="Wt3-QP-vCh" id="kx1-tF-7Rk"/>
                 <outlet property="imageView" destination="hBK-40-I9S" id="zZ5-zB-hh2"/>
                 <outlet property="lastSeenDateLabel" destination="ZSL-B0-bod" id="xQI-pL-PlW"/>
+                <outlet property="map" destination="7r2-KV-0PM" id="Ggw-r1-DyU"/>
                 <outlet property="tagsLabel" destination="k4t-KR-cd5" id="4iN-Jr-io9"/>
                 <outlet property="titleTextField" destination="GhQ-Nk-9GS" id="QM5-GW-eMX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -143,8 +146,18 @@
                         </stackView>
                     </subviews>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXg-Lu-Iaz">
+                    <rect key="frame" x="132" y="241" width="111" height="30"/>
+                    <state key="normal" title="Add my location"/>
+                    <connections>
+                        <action selector="addMyLocationTapped:" destination="-1" eventType="touchUpInside" id="sTq-Xm-c2q"/>
+                    </connections>
+                </button>
+                <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-KV-0PM">
+                    <rect key="frame" x="20" y="232" width="335" height="76"/>
+                </mapView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wt3-QP-vCh">
-                    <rect key="frame" x="16" y="240" width="343" height="407"/>
+                    <rect key="frame" x="16" y="310" width="343" height="337"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -154,11 +167,18 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KqC-xp-7vE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="4q2-CY-wbU"/>
-                <constraint firstItem="Wt3-QP-vCh" firstAttribute="top" secondItem="KqC-xp-7vE" secondAttribute="bottom" constant="20" id="VpM-Sc-kTy"/>
+                <constraint firstItem="7r2-KV-0PM" firstAttribute="top" secondItem="KqC-xp-7vE" secondAttribute="bottom" constant="12" id="Bac-ej-CDM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7r2-KV-0PM" secondAttribute="trailing" constant="20" id="EIz-0x-FlP"/>
+                <constraint firstItem="Wt3-QP-vCh" firstAttribute="top" secondItem="7r2-KV-0PM" secondAttribute="bottom" constant="2" id="J1o-aA-IFa"/>
+                <constraint firstItem="Wt3-QP-vCh" firstAttribute="top" secondItem="KqC-xp-7vE" secondAttribute="bottom" constant="90" id="VpM-Sc-kTy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wt3-QP-vCh" secondAttribute="bottom" constant="20" id="aGN-Ze-jbQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wt3-QP-vCh" secondAttribute="trailing" constant="16" id="bYH-2E-dvu"/>
+                <constraint firstItem="SXg-Lu-Iaz" firstAttribute="top" secondItem="KqC-xp-7vE" secondAttribute="bottom" constant="21" id="daQ-x4-WSW"/>
+                <constraint firstItem="7r2-KV-0PM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="eTK-y2-Xvi"/>
+                <constraint firstItem="SXg-Lu-Iaz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iDK-S2-5Ls"/>
                 <constraint firstItem="Wt3-QP-vCh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="kLb-ro-wyd"/>
                 <constraint firstItem="KqC-xp-7vE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="lY2-VH-1hB"/>
+                <constraint firstItem="7r2-KV-0PM" firstAttribute="top" secondItem="KqC-xp-7vE" secondAttribute="bottom" constant="12" id="qFa-rj-6Z4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KqC-xp-7vE" secondAttribute="trailing" constant="20" id="u80-Tx-ngO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -2,7 +2,7 @@
 //  Note+CoreDataProperties.swift
 //  Everpobre
 //
-//  Created by Noelia Alvarez on 24/10/2018.
+//  Created by Noelia Alvarez on 04/11/2018.
 //  Copyright © 2018 Noelia Alvarez. All rights reserved.
 //
 //
@@ -18,10 +18,13 @@ extension Note {
     }
 
     @NSManaged public var creationDate: NSDate?
+    @NSManaged public var image: NSData?
     @NSManaged public var lastSeenDate: NSDate?
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
+    @NSManaged public var tags: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
-    @NSManaged public var image: NSData?
     @NSManaged public var notebook: Notebook?
 
 }
