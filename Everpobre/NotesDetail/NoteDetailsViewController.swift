@@ -154,6 +154,7 @@ class NoteDetailsViewController: UIViewController {
         }
         imageView.image = UIImage(data: data)
 
+        
         if let latitude = kind.note?.latitude, let longitude = kind.note?.longitude {
             map.isHidden = false
             addCenterMapAnnotation(latitude: latitude, longitude: longitude)

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,30 +19,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGw-fF-7ry">
-                        <rect key="frame" x="33.5" y="64.5" width="33.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hzI-fZ-GAg">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGw-fF-7ry">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="hLa-er-n3G"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F51-4d-zVY">
-                        <rect key="frame" x="29" y="125.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F51-4d-zVY">
+                        <rect key="frame" x="0.0" y="132" width="100" height="18"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="F51-4d-zVY" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8Aa-ze-Tdp"/>
-                <constraint firstItem="aGw-fF-7ry" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ss9-gb-b9z"/>
-                <constraint firstItem="F51-4d-zVY" firstAttribute="top" secondItem="aGw-fF-7ry" secondAttribute="bottom" constant="40" id="Zmp-2O-eDM"/>
-                <constraint firstItem="aGw-fF-7ry" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="mQ0-0d-pz6"/>
+                <constraint firstItem="F51-4d-zVY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0N5-tY-Skz"/>
+                <constraint firstAttribute="trailing" secondItem="F51-4d-zVY" secondAttribute="trailing" id="5FX-Pb-Hk7"/>
+                <constraint firstItem="aGw-fF-7ry" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Lsw-xV-wKZ"/>
+                <constraint firstItem="F51-4d-zVY" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ur4-aL-A0P"/>
+                <constraint firstItem="aGw-fF-7ry" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lTz-Ok-CDq"/>
+                <constraint firstItem="aGw-fF-7ry" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="rEi-pt-WBi"/>
+                <constraint firstAttribute="bottom" secondItem="F51-4d-zVY" secondAttribute="bottom" id="wLl-tK-bvz"/>
+                <constraint firstAttribute="trailing" secondItem="aGw-fF-7ry" secondAttribute="trailing" id="yAA-Nr-wal"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="122" height="190"/>
             <connections>
                 <outlet property="creationDateLabel" destination="F51-4d-zVY" id="xCk-wc-fhB"/>
+                <outlet property="imageView" destination="hzI-fZ-GAg" id="1ib-OH-kn9"/>
                 <outlet property="titleLabel" destination="aGw-fF-7ry" id="uqM-Ax-F5f"/>
             </connections>
             <point key="canvasLocation" x="195.19999999999999" y="71.064467766116948"/>
