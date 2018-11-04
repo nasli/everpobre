@@ -18,9 +18,11 @@ public class Note: NSManagedObject {
 extension Note {
     func csv() -> String {
         let exportedTitle = title ?? "Sin Titulo"
+        let tagsReplacedCommas = tags!.replacingOccurrences(of: ",", with: ".")
+        let exportedTags = tagsReplacedCommas
         let exportedText = text ?? ""
         let exportedCreationDate = (creationDate as Date?)?.customStringLabel() ?? "ND"
 
-        return "\(exportedCreationDate),\(exportedTitle),\(exportedText)\n"
+        return "\(exportedCreationDate),\(exportedTitle),\(exportedTags),\(exportedText)\n"
     }
 }

@@ -62,7 +62,7 @@ class NewNotesListViewController: UIViewController {
         self.view.backgroundColor = .white
 
         let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNote))
-        let exportButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportCSV))
+        let exportButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareCSVofNotes))
 
         self.navigationItem.rightBarButtonItems = [addButtonItem, exportButtonItem]
     }
@@ -74,7 +74,7 @@ class NewNotesListViewController: UIViewController {
         self.present(navVC, animated: true, completion: nil)
     }
 
-    @objc private func exportCSV() {
+    @objc private func shareCSVofNotes() {
 
         coreDataStack.storeContainer.performBackgroundTask { [unowned self] (context) in
 
@@ -100,15 +100,23 @@ class NewNotesListViewController: UIViewController {
             }
 
             if let fileHandle = fileHandle {
+                let csvHeader = "CreationDate, Year, Title, Tags, Text\n"
+                guard let csvHeaderData = csvHeader.data(using: .utf8, allowLossyConversion: false) else { return }
+                fileHandle.write(csvHeaderData)
                 for note in results {
                     fileHandle.seekToEndOfFile()
-                    guard let csvData = note.csv().data(using: .utf8, allowLossyConversion: false) else { return }
-                    fileHandle.write(csvData)
+                    guard let csvDataLine = note.csv().data(using: .utf8, allowLossyConversion: false) else { return }
+                    fileHandle.write(csvDataLine)
                 }
 
                 fileHandle.closeFile()
                 DispatchQueue.main.async { [weak self] in
-                    self?.showExportFinishedAlert(exportPath)
+
+                    let notebookName = self?.notebook.name
+                    let activityViewController = UIActivityViewController(
+                        activityItems: ["CSV with all Notes of Notebook: \(notebookName!).",URL(fileURLWithPath: exportPath) ],
+                        applicationActivities: nil)
+                    self?.present(activityViewController, animated: true, completion: nil)
                 }
 
             } else {
@@ -161,7 +169,6 @@ class NewNotesListViewController: UIViewController {
                 map.addCenterMapAnnotation(latitude: latitude as! Double, longitude: longitude as! Double, title: note.title!)
             }
         }
-        
     }
 
 }
