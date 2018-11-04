@@ -20,8 +20,8 @@ extension Note {
     @NSManaged public var creationDate: NSDate?
     @NSManaged public var image: NSData?
     @NSManaged public var lastSeenDate: NSDate?
-    @NSManaged public var latitude: Double
-    @NSManaged public var longitude: Double
+    @NSManaged public var latitude: NSNumber?
+    @NSManaged public var longitude: NSNumber?
     @NSManaged public var tags: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?

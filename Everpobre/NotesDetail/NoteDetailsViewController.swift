@@ -97,8 +97,11 @@ class NoteDetailsViewController: UIViewController {
             note.image = imageData
 
             if location != nil {
-                note.latitude = self.location!.latitude
-                note.longitude = self.location!.longitude
+                note.latitude = self.location!.latitude as NSNumber
+                note.longitude = self.location!.longitude as NSNumber
+            } else {
+                note.latitude = nil
+                note.longitude = nil
             }
 
             note.tags = tagsTextField.text
@@ -154,13 +157,12 @@ class NoteDetailsViewController: UIViewController {
         }
         imageView.image = UIImage(data: data)
 
-        
+        map.isHidden = true
         if let latitude = kind.note?.latitude, let longitude = kind.note?.longitude {
             map.isHidden = false
-            addCenterMapAnnotation(latitude: latitude, longitude: longitude)
-        } else {
-            map.isHidden = true
+            addCenterMapAnnotation(latitude: Double(truncating: latitude), longitude: Double(truncating: longitude))
         }
+        
         // TODO: Replace with Tags objects
         tagsTextField.text = kind.note?.tags
 
