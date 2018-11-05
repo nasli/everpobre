@@ -20,10 +20,12 @@ extension Note {
 
         let exportedCreationDate = (creationDate as Date?)?.customStringLabel().replacingOccurrences(of: ",", with: ".") ?? "ND"
         let exportedUpdatedDate = (lastSeenDate as Date?)?.customStringLabel().replacingOccurrences(of: ",", with: ".") ?? "ND"
-        let exportedTitle = title!
+        let exportedTitle = (title ?? "").isEmpty ? "" : title
         let exportedTags = tags!.replacingOccurrences(of: ",", with: ".")
-        let exportedText = text!
+        let exportedText = (text ?? "").isEmpty ? "" : text
+        let exportedLatitude = latitude?.stringValue ?? ""
+        let exportedLongitude = longitude?.stringValue ?? ""
 
-        return "\(exportedCreationDate),\(exportedUpdatedDate),\(exportedTitle),\(exportedTags),\(exportedText)\n"
+        return "\(exportedCreationDate),\(exportedUpdatedDate),\(exportedTitle!),\(exportedTags),\(exportedText!),\(exportedLatitude),\(exportedLongitude)\n"
     }
 }
